@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bo0clux7sp3s5"]
+
+[ext_resource type="Script" uid="uid://bms4j2i3uvq7e" path="res://_/scenes/ks4036_movement.gd" id="1_p1qul"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3eisr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p1qul"]
+size = Vector3(0.06925964, 0.058052063, 0.09791565)
+
+[node name="demo_voiture" type="Node3D" unique_id=1866637085]
+
+[node name="ks4036" type="CharacterBody3D" parent="." unique_id=1209282784]
+
+[node name="dimension_66x94x50" type="MeshInstance3D" parent="ks4036" unique_id=1843871938]
+transform = Transform3D(0.066, 0, 0, 0, 0.05, 0, 0, 0, 0.094, 0, 0, 0)
+mesh = SubResource("BoxMesh_3eisr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ks4036" unique_id=1875974355]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00048065186, 0.0011711121, 0.00045013428)
+shape = SubResource("BoxShape3D_p1qul")
+
+[node name="code" type="Node" parent="ks4036" unique_id=770528519]
+
+[node name="movement" type="Node" parent="ks4036/code" unique_id=411089498 node_paths=PackedStringArray("character")]
+script = ExtResource("1_p1qul")
+character = NodePath("../..")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1340880844]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.046548225)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1315204326]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.046548225)

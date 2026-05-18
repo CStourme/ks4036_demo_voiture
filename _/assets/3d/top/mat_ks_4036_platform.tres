@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b8dso1a17k6o5"]
+
+[ext_resource type="Texture2D" uid="uid://cvnbnjvu2i1e7" path="res://addons/2026_04_11_gdp_learn_with_sensors/feature/ks_4036/3d/top/ks_4036_top_platform_uv_color.png" id="1_4xye6"]
+
+[resource]
+albedo_texture = ExtResource("1_4xye6")
