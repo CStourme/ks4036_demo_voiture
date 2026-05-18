@@ -1,22 +1,54 @@
 [gd_scene format=3 uid="uid://bo0clux7sp3s5"]
 
+[ext_resource type="Material" uid="uid://cn4in8seqgn5l" path="res://_/assets/3d/body/mat_ks_4036_body.tres" id="1_dcf8o"]
 [ext_resource type="Script" uid="uid://bms4j2i3uvq7e" path="res://_/scripts/ks4036_movement.gd" id="1_p1qul"]
+[ext_resource type="ArrayMesh" uid="uid://dfwvieaagj7g0" path="res://_/assets/3d/body/ks_4036_body.obj" id="2_bsm25"]
 [ext_resource type="Script" uid="uid://dlnyt6suspkrg" path="res://_/scripts/input_ks4036_relay.gd" id="2_mpekd"]
+[ext_resource type="Script" uid="uid://c5dwxeb6ft00q" path="res://_/scripts/setup_xr.gd" id="3_mnfru"]
+[ext_resource type="Material" uid="uid://d0uhahsnc7kwl" path="res://_/assets/3d/wheel/mat_ks_4036_wheel_black.tres" id="3_neg4v"]
+[ext_resource type="ArrayMesh" uid="uid://dyxmwr46idk40" path="res://_/assets/3d/wheel/ks_4036_wheel.obj" id="4_01bxa"]
+[ext_resource type="Script" uid="uid://b0ndx8c77ubwc" path="res://_/scripts/input_xr_relay.gd" id="4_xqpse"]
+[ext_resource type="Material" uid="uid://cjwprcb6pbcjj" path="res://_/assets/3d/black.tres" id="5_1o57j"]
+[ext_resource type="Script" uid="uid://bywit7ow2tpwy" path="res://_/scripts/two_triggers_to_car.gd" id="9_bsm25"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_3eisr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p1qul"]
 size = Vector3(0.06925964, 0.058052063, 0.09791565)
 
+[sub_resource type="BoxMesh" id="BoxMesh_mnfru"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xqpse"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mnfru"]
+
 [node name="demo_voiture" type="Node3D" unique_id=1866637085]
 
 [node name="ks4036" type="CharacterBody3D" parent="." unique_id=1209282784]
 
-[node name="dimension_66x94x50" type="MeshInstance3D" parent="ks4036" unique_id=1843871938]
+[node name="meshs" type="Node" parent="ks4036" unique_id=1369087757]
+
+[node name="dimension_66x94x50" type="MeshInstance3D" parent="ks4036/meshs" unique_id=1843871938]
 transform = Transform3D(0.066, 0, 0, 0, 0.05, 0, 0, 0, 0.094, 0, 0, 0)
+visible = false
 mesh = SubResource("BoxMesh_3eisr")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ks4036" unique_id=1875974355]
+[node name="body" type="MeshInstance3D" parent="ks4036/meshs" unique_id=516172396]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.016, 0.02)
+material_override = ExtResource("1_dcf8o")
+mesh = ExtResource("2_bsm25")
+
+[node name="L_wheel" type="MeshInstance3D" parent="ks4036/meshs" unique_id=1119569084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.026, 0.016, 0.02)
+material_override = ExtResource("3_neg4v")
+mesh = ExtResource("4_01bxa")
+
+[node name="R_wheel" type="MeshInstance3D" parent="ks4036/meshs" unique_id=1069683868]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026, 0.016, 0.02)
+material_override = ExtResource("3_neg4v")
+mesh = ExtResource("4_01bxa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ks4036/meshs" unique_id=1875974355]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00048065186, 0.0011711121, 0.00045013428)
 shape = SubResource("BoxShape3D_p1qul")
 
@@ -30,11 +62,21 @@ speed_rotate_degree = 180.0
 [node name="input_keyboard" type="Node" parent="ks4036/code" unique_id=1167963514]
 script = ExtResource("2_mpekd")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1340880844]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.046548225)
+[node name="setup_xr" type="Node" parent="ks4036/code" unique_id=517395109]
+script = ExtResource("3_mnfru")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1315204326]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06731759, 0.28023213)
+[node name="InputXRRelay" type="Node" parent="ks4036/code" unique_id=1739567236 node_paths=PackedStringArray("left_hand", "right_hand", "left_joystick_label_debug", "right_joystick_label_debug", "left_trigger_label_debug", "right_trigger_label_debug")]
+script = ExtResource("4_xqpse")
+left_hand = NodePath("../../../XROrigin3D/Left_Hand")
+right_hand = NodePath("../../../XROrigin3D/Right_Hand")
+left_joystick_label_debug = NodePath("../../../Left_Joystick_Label")
+right_joystick_label_debug = NodePath("../../../Right_Joystick_Label")
+left_trigger_label_debug = NodePath("../../../Left_Trigger_Label")
+right_trigger_label_debug = NodePath("../../../Right_Trigger_Label")
+
+[node name="two_triggers_to_car" type="Node" parent="ks4036/code" unique_id=1534686828 node_paths=PackedStringArray("car")]
+script = ExtResource("9_bsm25")
+car = NodePath("../movement")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1221190444]
 
@@ -67,6 +109,68 @@ min_value = -1.0
 max_value = 1.0
 step = 0.1
 
-[connection signal="joystick_update" from="ks4036/code/input_keyboard" to="ks4036/code/movement" method="set_joystick_with_vector2"]
+[node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=960658193]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0.2)
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" unique_id=781743687]
+
+[node name="Left_Hand" type="XRController3D" parent="XROrigin3D" unique_id=1124116483]
+tracker = &"left_hand"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/Left_Hand" unique_id=1612360460]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0, 0)
+mesh = SubResource("BoxMesh_mnfru")
+
+[node name="Right_Hand" type="XRController3D" parent="XROrigin3D" unique_id=2102579007]
+tracker = &"right_hand"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="XROrigin3D/Right_Hand" unique_id=117337046]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0, 0)
+mesh = SubResource("BoxMesh_xqpse")
+
+[node name="Left_Joystick_Label" type="Label3D" parent="." unique_id=914697668]
+transform = Transform3D(0.90630776, 0, 0.42261827, 0, 1, 0, -0.42261827, 0, 0.90630776, 0, 0, -1.3211266)
+offset = Vector2(-150, 100)
+text = "Left Joystick"
+font_size = 20
+
+[node name="Right_Joystick_Label" type="Label3D" parent="." unique_id=815959769]
+transform = Transform3D(0.90630776, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.90630776, 0, 0, -1.3211266)
+offset = Vector2(150, 100)
+text = "Right Joystick"
+font_size = 20
+
+[node name="Left_Trigger_Label" type="Label3D" parent="." unique_id=1542583538]
+transform = Transform3D(0.90630776, 0, 0.42261827, 0, 1, 0, -0.42261827, 0, 0.90630776, 0, 0, -1.3211266)
+offset = Vector2(-150, 50)
+text = "Left Trigger"
+font_size = 20
+
+[node name="Right_Trigger_Label" type="Label3D" parent="." unique_id=1122729412]
+transform = Transform3D(0.90630776, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.90630776, 0, 0, -1.3211266)
+offset = Vector2(150, 50)
+text = "Right Trigger
+"
+font_size = 20
+
+[node name="ENV" type="Node" parent="." unique_id=864095639]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="ENV" unique_id=2135217428]
+transform = Transform3D(0.7071068, 0.5, -0.5, 0, 0.7071068, 0.7071068, 0.7071068, -0.5, 0.5, 0, 0.5897502, 0.4904223)
+shadow_enabled = true
+shadow_opacity = 0.5
+
+[node name="OmniLight3D" type="OmniLight3D" parent="ENV" unique_id=760014274]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72541225, 0.45348307)
+light_energy = 0.25
+
+[node name="Ground" type="MeshInstance3D" parent="ENV" unique_id=1533872319]
+mesh = SubResource("PlaneMesh_mnfru")
+surface_material_override/0 = ExtResource("5_1o57j")
+
+[connection signal="left_hand_joystick_update" from="ks4036/code/InputXRRelay" to="ks4036/code/movement" method="set_joystick_with_vector2"]
+[connection signal="left_hand_trigger_update" from="ks4036/code/InputXRRelay" to="ks4036/code/two_triggers_to_car" method="set_trigger_left"]
+[connection signal="right_hand_joystick_update" from="ks4036/code/InputXRRelay" to="ks4036/code/movement" method="set_joystick_with_vector2"]
+[connection signal="right_hand_trigger_update" from="ks4036/code/InputXRRelay" to="ks4036/code/two_triggers_to_car" method="set_trigger_right"]
 [connection signal="value_changed" from="CanvasLayer/VSlider" to="ks4036/code/movement" method="set_joystick_forward"]
 [connection signal="value_changed" from="CanvasLayer/HSlider" to="ks4036/code/movement" method="set_joystick_rotate"]

@@ -1,4 +1,7 @@
+class_name KS4036Movement
+
 extends Node
+
 @export var car_movement: CharacterBody3D
 @export var speed_forward_ms: float = 0.3
 @export_range(-1,1,0.1) var joystick_intensity: float = 0
