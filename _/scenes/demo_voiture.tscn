@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bo0clux7sp3s5"]
 
-[ext_resource type="Script" uid="uid://bms4j2i3uvq7e" path="res://_/scenes/ks4036_movement.gd" id="1_p1qul"]
+[ext_resource type="Script" uid="uid://bms4j2i3uvq7e" path="res://_/scripts/ks4036_movement.gd" id="1_p1qul"]
+[ext_resource type="Script" uid="uid://dlnyt6suspkrg" path="res://_/scripts/input_ks4036_relay.gd" id="2_mpekd"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_3eisr"]
 
@@ -21,12 +22,51 @@ shape = SubResource("BoxShape3D_p1qul")
 
 [node name="code" type="Node" parent="ks4036" unique_id=770528519]
 
-[node name="movement" type="Node" parent="ks4036/code" unique_id=411089498 node_paths=PackedStringArray("character")]
+[node name="movement" type="Node" parent="ks4036/code" unique_id=411089498 node_paths=PackedStringArray("car_movement")]
 script = ExtResource("1_p1qul")
-character = NodePath("../..")
+car_movement = NodePath("../..")
+speed_rotate_degree = 180.0
+
+[node name="input_keyboard" type="Node" parent="ks4036/code" unique_id=1167963514]
+script = ExtResource("2_mpekd")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1340880844]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.046548225)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1315204326]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.046548225)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06731759, 0.28023213)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1221190444]
+
+[node name="VSlider" type="VSlider" parent="CanvasLayer" unique_id=638554279]
+anchors_preset = -1
+anchor_left = 0.963
+anchor_top = 0.060000002
+anchor_right = 0.97900003
+anchor_bottom = 0.924
+offset_left = 0.41601563
+offset_top = 0.11999893
+offset_right = 0.1920166
+focus_mode = 0
+min_value = -1.0
+max_value = 1.0
+step = 0.1
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer" unique_id=832564091]
+anchors_preset = -1
+anchor_left = 0.027
+anchor_top = 0.043
+anchor_right = 0.94900006
+anchor_bottom = 0.068
+offset_left = -0.10400009
+offset_top = 0.13599968
+offset_right = -0.24804688
+offset_bottom = -0.06400299
+focus_mode = 0
+min_value = -1.0
+max_value = 1.0
+step = 0.1
+
+[connection signal="joystick_update" from="ks4036/code/input_keyboard" to="ks4036/code/movement" method="set_joystick_with_vector2"]
+[connection signal="value_changed" from="CanvasLayer/VSlider" to="ks4036/code/movement" method="set_joystick_forward"]
+[connection signal="value_changed" from="CanvasLayer/HSlider" to="ks4036/code/movement" method="set_joystick_rotate"]
