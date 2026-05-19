@@ -49,7 +49,7 @@ func _process(delta: float) -> void:
 	car_movement.rotate_y(deg_to_rad(speed_rotate_degree) * delta * -joystick_rotation_intensity)
 
 	# --- 2. CALCUL DE LA VITESSE DE CHAQUE ROUE ---
-	# COMMENT ÇA MARCHE ? (Note à moi-même pour ne plus me faire piéger) :
+	# COMMENT ÇA MARCHE ?
 	# Pour la roue GAUCHE, j'ajoute la rotation. Pour la roue DROITE, je la soustrais.
 	#
 	# POURQUOI LE * 0.5 ?

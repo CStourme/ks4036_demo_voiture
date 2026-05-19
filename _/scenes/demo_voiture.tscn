@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dlnyt6suspkrg" path="res://_/scripts/input_ks4036_relay.gd" id="2_mpekd"]
 [ext_resource type="Script" uid="uid://c5dwxeb6ft00q" path="res://_/scripts/setup_xr.gd" id="3_mnfru"]
 [ext_resource type="Script" uid="uid://b0ndx8c77ubwc" path="res://_/scripts/input_xr_relay.gd" id="4_xqpse"]
+[ext_resource type="Material" uid="uid://d0uhahsnc7kwl" path="res://_/assets/ks_4036/3d/wheel/mat_ks_4036_wheel_black.tres" id="7_o5nht"]
 [ext_resource type="ArrayMesh" uid="uid://dfwvieaagj7g0" path="res://_/assets/ks_4036/3d/body/ks_4036_body.obj" id="8_kilk5"]
 [ext_resource type="Script" uid="uid://bywit7ow2tpwy" path="res://_/scripts/two_triggers_to_car.gd" id="9_bsm25"]
 [ext_resource type="Material" uid="uid://b8dso1a17k6o5" path="res://_/assets/ks_4036/3d/top/mat_ks_4036_platform.tres" id="9_hhfow"]
@@ -77,12 +78,14 @@ shape = SubResource("BoxShape3D_p1qul")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, -0.008488811, 0.017574564)
 script = ExtResource("12_pueyk")
 pivot = NodePath("L_pivot")
+speed_rotation_max = 1080.0
 invert_rotation = true
 
 [node name="L_pivot" type="Node3D" parent="ks4036/ks4036Mesh/size/anchorWheelLeft" unique_id=13906924]
 
 [node name="L_wheel" type="MeshInstance3D" parent="ks4036/ks4036Mesh/size/anchorWheelLeft/L_pivot" unique_id=1119569084]
 mesh = ExtResource("14_gkdii")
+surface_material_override/0 = ExtResource("7_o5nht")
 
 [node name="L_motor" type="MeshInstance3D" parent="ks4036/ks4036Mesh/size/anchorWheelLeft" unique_id=1024013380]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.0033, 0, -3.7799997e-05)
@@ -93,11 +96,13 @@ surface_material_override/0 = ExtResource("16_sbysa")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03, -0.008488811, 0.017574564)
 script = ExtResource("12_pueyk")
 pivot = NodePath("R_pivot")
+speed_rotation_max = 1080.0
 invert_rotation = true
 
 [node name="R_pivot" type="Node3D" parent="ks4036/ks4036Mesh/size/anchorWheelRight" unique_id=642151951]
 
 [node name="R_wheel" type="MeshInstance3D" parent="ks4036/ks4036Mesh/size/anchorWheelRight/R_pivot" unique_id=684726878]
+material_override = ExtResource("7_o5nht")
 mesh = ExtResource("14_gkdii")
 
 [node name="L_motor2" type="MeshInstance3D" parent="ks4036/ks4036Mesh/size/anchorWheelRight" unique_id=1199666621]
@@ -110,7 +115,6 @@ surface_material_override/0 = ExtResource("16_sbysa")
 [node name="movement" type="Node" parent="ks4036/code" unique_id=411089498 node_paths=PackedStringArray("car_movement")]
 script = ExtResource("1_p1qul")
 car_movement = NodePath("../..")
-speed_rotate_degree = 180.0
 
 [node name="input_keyboard" type="Node" parent="ks4036/code" unique_id=1167963514]
 script = ExtResource("2_mpekd")
@@ -223,8 +227,10 @@ mesh = SubResource("PlaneMesh_mnfru")
 
 [connection signal="wheel_rotation_in_percent_left" from="ks4036/code/movement" to="ks4036/ks4036Mesh/size/anchorWheelLeft" method="set_rotation_percent"]
 [connection signal="wheel_rotation_in_percent_right" from="ks4036/code/movement" to="ks4036/ks4036Mesh/size/anchorWheelRight" method="set_rotation_percent"]
+[connection signal="left_hand_grip_update" from="ks4036/code/InputXRRelay" to="ks4036/code/two_triggers_to_car" method="set_grip_left"]
 [connection signal="left_hand_joystick_update" from="ks4036/code/InputXRRelay" to="ks4036/code/two_triggers_to_car" method="set_joystick_left"]
 [connection signal="left_hand_trigger_update" from="ks4036/code/InputXRRelay" to="ks4036/code/two_triggers_to_car" method="set_trigger_left"]
+[connection signal="right_hand_grip_update" from="ks4036/code/InputXRRelay" to="ks4036/code/two_triggers_to_car" method="set_grip_right"]
 [connection signal="right_hand_joystick_update" from="ks4036/code/InputXRRelay" to="ks4036/code/two_triggers_to_car" method="set_joystick_right"]
 [connection signal="right_hand_trigger_update" from="ks4036/code/InputXRRelay" to="ks4036/code/two_triggers_to_car" method="set_trigger_right"]
 [connection signal="value_changed" from="CanvasLayer/VSlider" to="ks4036/code/movement" method="set_joystick_forward"]

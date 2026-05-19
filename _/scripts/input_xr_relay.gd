@@ -4,6 +4,8 @@ signal left_hand_joystick_update(L_joystick: Vector2)
 signal right_hand_joystick_update(R_joystick: Vector2)
 signal left_hand_trigger_update(L_Trigger: float)
 signal right_hand_trigger_update(R_Trigger: float)
+signal left_hand_grip_update(L_Grip: float)
+signal right_hand_grip_update(R_Grip: float)
 
 @export var left_hand: XRController3D
 @export var right_hand: XRController3D
@@ -41,6 +43,12 @@ func _process(delta: float) -> void:
 	left_hand_trigger_update.emit(L_Trigger)
 	if left_trigger_label_debug != null:
 		left_trigger_label_debug.text = "L_Tri: %0.1f" % L_Trigger
+		
+	# --- GESTION DES GÂCHETTES MAJEUR (GRIP) (Note à moi-même) ---
+	var R_Grip: float = get_right_grip_value()
+	right_hand_grip_update.emit(R_Grip)
+	var L_Grip: float = get_left_grip_value()
+	left_hand_grip_update.emit(L_Grip)
 
 # --- FONCTIONS DE LECTURE (Inchangées) ---
 func get_right_joystick_2d_value() -> Vector2:
@@ -64,3 +72,11 @@ func get_left_trigger_value() -> float:
 func get_right_trigger_value() -> float:
 	if not right_hand: return 0.0
 	return right_hand.get_float("trigger")
+	
+func get_left_grip_value() -> float:
+	if not left_hand: return 0.0
+	return left_hand.get_float("grip") # "grip" est le mot clé standard pour le majeur en VR
+
+func get_right_grip_value() -> float:
+	if not right_hand: return 0.0
+	return right_hand.get_float("grip")
