@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://genfpuvkr1av"]
+
+[ext_resource type="Texture2D" uid="uid://u6ujixgwwqp3" path="res://addons/2026_04_11_gdp_learn_with_sensors/feature/mini_motor/3d/mini_motor_gear_uv_color.png" id="1_hd7nb"]
+
+[resource]
+albedo_color = Color(1, 0.93333334, 0.23137255, 1)
+albedo_texture = ExtResource("1_hd7nb")

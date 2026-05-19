@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b4t1l1vkw6pce"
+path="res://.godot/imported/mini_motor_gear_hide.obj-4c7a873a7ebef14bb15264b58f71051d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/mini_motor_gear_hide.obj-4c7a873a7ebef14bb15264b58f71051d.mesh"]
+
+source_file="res://_/assets/mini_motor/mini_motor_gear_hide.obj"
+dest_files=["res://.godot/imported/mini_motor_gear_hide.obj-4c7a873a7ebef14bb15264b58f71051d.mesh", "res://.godot/imported/mini_motor_gear_hide.obj-4c7a873a7ebef14bb15264b58f71051d.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

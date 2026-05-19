@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dixi5sxvm51j1"
-path="res://.godot/imported/ks_4036_wheel_uv.png-04a3bb6efb93cb10dd826110458f9ba2.ctex"
+uid="uid://cvnbnjvu2i1e7"
+path.s3tc="res://.godot/imported/ks_4036_top_platform_uv_color.png-fc9b606658a036d0650332d2b29e0f73.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://_/assets/3d/wheel/ks_4036_wheel_uv.png"
-dest_files=["res://.godot/imported/ks_4036_wheel_uv.png-04a3bb6efb93cb10dd826110458f9ba2.ctex"]
+source_file="res://_/assets/ks_4036/3d/top/ks_4036_top_platform_uv_color.png"
+dest_files=["res://.godot/imported/ks_4036_top_platform_uv_color.png-fc9b606658a036d0650332d2b29e0f73.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -23,7 +24,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -37,4 +38,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

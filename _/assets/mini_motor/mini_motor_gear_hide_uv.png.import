@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boqrb1432pf6h"
-path.s3tc="res://.godot/imported/board.png-9578905cff3e16e6a0724c18639247b2.s3tc.ctex"
+uid="uid://c50dc4g6kptgx"
+path.s3tc="res://.godot/imported/mini_motor_gear_hide_uv.png-44fb8b37f32213598f5b1f519ffa9705.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://_/assets/2d/board.png"
-dest_files=["res://.godot/imported/board.png-9578905cff3e16e6a0724c18639247b2.s3tc.ctex"]
+source_file="res://_/assets/mini_motor/mini_motor_gear_hide_uv.png"
+dest_files=["res://.godot/imported/mini_motor_gear_hide_uv.png-44fb8b37f32213598f5b1f519ffa9705.s3tc.ctex"]
 
 [params]
 

@@ -1,15 +1,24 @@
 [gd_scene format=3 uid="uid://bo0clux7sp3s5"]
 
-[ext_resource type="Material" uid="uid://cn4in8seqgn5l" path="res://_/assets/3d/body/mat_ks_4036_body.tres" id="1_dcf8o"]
 [ext_resource type="Script" uid="uid://bms4j2i3uvq7e" path="res://_/scripts/ks4036_movement.gd" id="1_p1qul"]
-[ext_resource type="ArrayMesh" uid="uid://dfwvieaagj7g0" path="res://_/assets/3d/body/ks_4036_body.obj" id="2_bsm25"]
 [ext_resource type="Script" uid="uid://dlnyt6suspkrg" path="res://_/scripts/input_ks4036_relay.gd" id="2_mpekd"]
 [ext_resource type="Script" uid="uid://c5dwxeb6ft00q" path="res://_/scripts/setup_xr.gd" id="3_mnfru"]
-[ext_resource type="Material" uid="uid://d0uhahsnc7kwl" path="res://_/assets/3d/wheel/mat_ks_4036_wheel_black.tres" id="3_neg4v"]
-[ext_resource type="ArrayMesh" uid="uid://dyxmwr46idk40" path="res://_/assets/3d/wheel/ks_4036_wheel.obj" id="4_01bxa"]
 [ext_resource type="Script" uid="uid://b0ndx8c77ubwc" path="res://_/scripts/input_xr_relay.gd" id="4_xqpse"]
-[ext_resource type="Material" uid="uid://cjwprcb6pbcjj" path="res://_/assets/3d/black.tres" id="5_1o57j"]
+[ext_resource type="ArrayMesh" uid="uid://dfwvieaagj7g0" path="res://_/assets/ks_4036/3d/body/ks_4036_body.obj" id="8_kilk5"]
 [ext_resource type="Script" uid="uid://bywit7ow2tpwy" path="res://_/scripts/two_triggers_to_car.gd" id="9_bsm25"]
+[ext_resource type="Material" uid="uid://b8dso1a17k6o5" path="res://_/assets/ks_4036/3d/top/mat_ks_4036_platform.tres" id="9_hhfow"]
+[ext_resource type="ArrayMesh" uid="uid://dcp3drqm6juuu" path="res://_/assets/ks_4036/3d/top/ks_4036_top_platform.obj" id="10_6loy1"]
+[ext_resource type="ArrayMesh" uid="uid://cle2gnxktb1fd" path="res://_/assets/ks_4036/3d/led/ks4036_front_led.obj" id="11_3a6t2"]
+[ext_resource type="Script" uid="uid://53upy0lvlaa0" path="res://_/scenes/wheel_rotation.gd" id="12_pueyk"]
+[ext_resource type="ArrayMesh" uid="uid://dyxmwr46idk40" path="res://_/assets/ks_4036/3d/wheel/ks_4036_wheel.obj" id="14_gkdii"]
+[ext_resource type="ArrayMesh" uid="uid://cgdvht26n4oxp" path="res://_/assets/mini_motor/mini_motor_gear.obj" id="15_qbc84"]
+[ext_resource type="Material" uid="uid://genfpuvkr1av" path="res://_/assets/mini_motor/mat_mini_motor_body.tres" id="16_sbysa"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dnmfj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cnq7a"]
+transparency = 1
+albedo_color = Color(0, 0.8, 0.03999996, 0.16470589)
 
 [sub_resource type="BoxMesh" id="BoxMesh_3eisr"]
 
@@ -26,31 +35,75 @@ size = Vector3(0.06925964, 0.058052063, 0.09791565)
 
 [node name="ks4036" type="CharacterBody3D" parent="." unique_id=1209282784]
 
-[node name="meshs" type="Node" parent="ks4036" unique_id=1369087757]
+[node name="ks4036Mesh" type="Node3D" parent="ks4036" unique_id=1701247262]
 
-[node name="dimension_66x94x50" type="MeshInstance3D" parent="ks4036/meshs" unique_id=1843871938]
+[node name="size" type="Node3D" parent="ks4036/ks4036Mesh" unique_id=1693914304]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ks4036/ks4036Mesh/size" unique_id=1730198292]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_dnmfj")
+surface_material_override/0 = SubResource("StandardMaterial3D_cnq7a")
+
+[node name="dimension_66x94x50" type="MeshInstance3D" parent="ks4036/ks4036Mesh/size" unique_id=1843871938]
 transform = Transform3D(0.066, 0, 0, 0, 0.05, 0, 0, 0, 0.094, 0, 0, 0)
 visible = false
 mesh = SubResource("BoxMesh_3eisr")
 
-[node name="body" type="MeshInstance3D" parent="ks4036/meshs" unique_id=516172396]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.016, 0.02)
-material_override = ExtResource("1_dcf8o")
-mesh = ExtResource("2_bsm25")
+[node name="body" type="MeshInstance3D" parent="ks4036/ks4036Mesh/size" unique_id=516172396]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.013480823, 0.017637074)
+mesh = ExtResource("8_kilk5")
 
-[node name="L_wheel" type="MeshInstance3D" parent="ks4036/meshs" unique_id=1119569084]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.026, 0.016, 0.02)
-material_override = ExtResource("3_neg4v")
-mesh = ExtResource("4_01bxa")
+[node name="top" type="MeshInstance3D" parent="ks4036/ks4036Mesh/size" unique_id=56702110]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.011507778, 0.017637074)
+material_override = ExtResource("9_hhfow")
+mesh = ExtResource("10_6loy1")
 
-[node name="R_wheel" type="MeshInstance3D" parent="ks4036/meshs" unique_id=1069683868]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026, 0.016, 0.02)
-material_override = ExtResource("3_neg4v")
-mesh = ExtResource("4_01bxa")
+[node name="L_led" type="MeshInstance3D" parent="ks4036/ks4036Mesh/size" unique_id=71392053]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016, -0.007961771, -0.030284777)
+material_override = ExtResource("9_hhfow")
+mesh = ExtResource("11_3a6t2")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ks4036/meshs" unique_id=1875974355]
+[node name="R_led" type="MeshInstance3D" parent="ks4036/ks4036Mesh/size" unique_id=238204952]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016, -0.007961771, -0.030284777)
+material_override = ExtResource("9_hhfow")
+mesh = ExtResource("11_3a6t2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ks4036/ks4036Mesh/size" unique_id=1875974355]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00048065186, 0.0011711121, 0.00045013428)
 shape = SubResource("BoxShape3D_p1qul")
+
+[node name="anchorWheelLeft" type="Node3D" parent="ks4036/ks4036Mesh/size" unique_id=49127480 node_paths=PackedStringArray("pivot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, -0.008488811, 0.017574564)
+script = ExtResource("12_pueyk")
+pivot = NodePath("L_pivot")
+invert_rotation = true
+
+[node name="L_pivot" type="Node3D" parent="ks4036/ks4036Mesh/size/anchorWheelLeft" unique_id=13906924]
+
+[node name="L_wheel" type="MeshInstance3D" parent="ks4036/ks4036Mesh/size/anchorWheelLeft/L_pivot" unique_id=1119569084]
+mesh = ExtResource("14_gkdii")
+
+[node name="L_motor" type="MeshInstance3D" parent="ks4036/ks4036Mesh/size/anchorWheelLeft" unique_id=1024013380]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.0033, 0, -3.7799997e-05)
+mesh = ExtResource("15_qbc84")
+surface_material_override/0 = ExtResource("16_sbysa")
+
+[node name="anchorWheelRight" type="Node3D" parent="ks4036/ks4036Mesh/size" unique_id=1038882717 node_paths=PackedStringArray("pivot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03, -0.008488811, 0.017574564)
+script = ExtResource("12_pueyk")
+pivot = NodePath("R_pivot")
+invert_rotation = true
+
+[node name="R_pivot" type="Node3D" parent="ks4036/ks4036Mesh/size/anchorWheelRight" unique_id=642151951]
+
+[node name="R_wheel" type="MeshInstance3D" parent="ks4036/ks4036Mesh/size/anchorWheelRight/R_pivot" unique_id=684726878]
+mesh = ExtResource("14_gkdii")
+
+[node name="L_motor2" type="MeshInstance3D" parent="ks4036/ks4036Mesh/size/anchorWheelRight" unique_id=1199666621]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.0033, 0, 0)
+mesh = ExtResource("15_qbc84")
+surface_material_override/0 = ExtResource("16_sbysa")
 
 [node name="code" type="Node" parent="ks4036" unique_id=770528519]
 
@@ -110,7 +163,7 @@ max_value = 1.0
 step = 0.1
 
 [node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=960658193]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0.2)
+transform = Transform3D(1, 0, 0, 0, 0.9729748, 0.23091148, 0, -0.23091148, 0.9729748, 0, 0.14147359, 0.32384303)
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" unique_id=781743687]
 
@@ -165,12 +218,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72541225, 0.45348307)
 light_energy = 0.25
 
 [node name="Ground" type="MeshInstance3D" parent="ENV" unique_id=1533872319]
+visible = false
 mesh = SubResource("PlaneMesh_mnfru")
-surface_material_override/0 = ExtResource("5_1o57j")
 
-[connection signal="left_hand_joystick_update" from="ks4036/code/InputXRRelay" to="ks4036/code/movement" method="set_joystick_with_vector2"]
+[connection signal="wheel_rotation_in_percent_left" from="ks4036/code/movement" to="ks4036/ks4036Mesh/size/anchorWheelLeft" method="set_rotation_percent"]
+[connection signal="wheel_rotation_in_percent_right" from="ks4036/code/movement" to="ks4036/ks4036Mesh/size/anchorWheelRight" method="set_rotation_percent"]
+[connection signal="left_hand_joystick_update" from="ks4036/code/InputXRRelay" to="ks4036/code/two_triggers_to_car" method="set_joystick_left"]
 [connection signal="left_hand_trigger_update" from="ks4036/code/InputXRRelay" to="ks4036/code/two_triggers_to_car" method="set_trigger_left"]
-[connection signal="right_hand_joystick_update" from="ks4036/code/InputXRRelay" to="ks4036/code/movement" method="set_joystick_with_vector2"]
+[connection signal="right_hand_joystick_update" from="ks4036/code/InputXRRelay" to="ks4036/code/two_triggers_to_car" method="set_joystick_right"]
 [connection signal="right_hand_trigger_update" from="ks4036/code/InputXRRelay" to="ks4036/code/two_triggers_to_car" method="set_trigger_right"]
 [connection signal="value_changed" from="CanvasLayer/VSlider" to="ks4036/code/movement" method="set_joystick_forward"]
 [connection signal="value_changed" from="CanvasLayer/HSlider" to="ks4036/code/movement" method="set_joystick_rotate"]

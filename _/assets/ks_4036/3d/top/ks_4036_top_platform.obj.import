@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dcp3drqm6juuu"
+path="res://.godot/imported/ks_4036_top_platform.obj-1fd7047862df2b887035e3d5ba244b0a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/ks_4036_top_platform.obj-1fd7047862df2b887035e3d5ba244b0a.mesh"]
+
+source_file="res://_/assets/ks_4036/3d/top/ks_4036_top_platform.obj"
+dest_files=["res://.godot/imported/ks_4036_top_platform.obj-1fd7047862df2b887035e3d5ba244b0a.mesh", "res://.godot/imported/ks_4036_top_platform.obj-1fd7047862df2b887035e3d5ba244b0a.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

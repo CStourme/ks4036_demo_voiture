@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d7nlflcl8l13"
-path.s3tc="res://.godot/imported/ks_4036_wheel_uv_color.png-ecf6ae6cfc9d5fa03ae8bc6c7cc5e6ca.s3tc.ctex"
+uid="uid://u6ujixgwwqp3"
+path.s3tc="res://.godot/imported/mini_motor_gear_uv_color.png-0f7eb0cb824d1e029d6098cdf9331d07.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://_/assets/3d/wheel/ks_4036_wheel_uv_color.png"
-dest_files=["res://.godot/imported/ks_4036_wheel_uv_color.png-ecf6ae6cfc9d5fa03ae8bc6c7cc5e6ca.s3tc.ctex"]
+source_file="res://_/assets/mini_motor/mini_motor_gear_uv_color.png"
+dest_files=["res://.godot/imported/mini_motor_gear_uv_color.png-0f7eb0cb824d1e029d6098cdf9331d07.s3tc.ctex"]
 
 [params]
 
