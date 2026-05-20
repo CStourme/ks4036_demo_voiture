@@ -39,6 +39,7 @@ func _process(delta: float) -> void:
 	right_hand_trigger_update.emit(R_Trigger)
 	if right_trigger_label_debug != null:
 		right_trigger_label_debug.text = "R_Tri: %0.1f" % R_Trigger		
+		
 	var L_Trigger: float = get_left_trigger_value()
 	left_hand_trigger_update.emit(L_Trigger)
 	if left_trigger_label_debug != null:

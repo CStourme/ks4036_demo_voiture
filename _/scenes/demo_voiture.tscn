@@ -199,14 +199,27 @@ font_size = 20
 
 [node name="Left_Trigger_Label" type="Label3D" parent="." unique_id=1542583538]
 transform = Transform3D(0.90630776, 0, 0.42261827, 0, 1, 0, -0.42261827, 0, 0.90630776, 0, 0, -1.3211266)
-offset = Vector2(-150, 50)
+offset = Vector2(-150, 60)
 text = "Left Trigger"
 font_size = 20
 
 [node name="Right_Trigger_Label" type="Label3D" parent="." unique_id=1122729412]
 transform = Transform3D(0.90630776, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.90630776, 0, 0, -1.3211266)
-offset = Vector2(150, 50)
+offset = Vector2(150, 60)
 text = "Right Trigger
+"
+font_size = 20
+
+[node name="Left_Grip_Label" type="Label3D" parent="." unique_id=1974429705]
+transform = Transform3D(0.90630776, 0, 0.42261827, 0, 1, 0, -0.42261827, 0, 0.90630776, 0, 0, -1.3211266)
+offset = Vector2(-150, 25)
+text = "Left Grip"
+font_size = 20
+
+[node name="Right_Grip_Label" type="Label3D" parent="." unique_id=795281713]
+transform = Transform3D(0.90630776, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.90630776, 0, 0, -1.3211266)
+offset = Vector2(150, 25)
+text = "Right Grip
 "
 font_size = 20
 
